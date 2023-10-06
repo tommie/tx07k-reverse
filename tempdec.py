@@ -74,6 +74,7 @@ def one(s: str):
         return
 
     tempf = 0.1*temp - 90
+    button = flag & 0x08 != 0
     battlow = flag & 0x04 != 0
 
     print('temp chan={}/{:x} flag={:x} temp={:.1f}*F rh={}%  {:010x}'.format(chan, gen, flag, tempf, hum, v))

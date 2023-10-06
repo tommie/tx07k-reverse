@@ -19,8 +19,8 @@ I   - 4-bit checksum, an almost-CRC-4 with polynomial 3.
 F   - 4-bit flags:
       0 - Unknown.
       1 - Unknown.
-      2 - Battery low
-      4 - Never seen.
+      2 - Battery low (below 2.5 V.)
+      3 - Button for manual transmission pressed.
 TTT - 12-bit temperature in deci-Fahrenheit, offset 90 *F.
 HH  - 8-bit humidity as %RH, in BCD.
 CC  - 8-bit channel (1-3).
