@@ -77,7 +77,8 @@ def one(s: str):
     button = flag & 0x08 != 0
     battlow = flag & 0x04 != 0
 
-    print('temp chan={}/{:x} flag={:x} temp={:.1f}*F rh={}%  {:010x}'.format(chan, gen, flag, tempf, hum, v))
+    flagstr = ("T" if button else "") + ("b" if battlow else "")
+    print('temp chan={}/{:x} flag={:x}/{} temp={:.1f}*F rh={}%  {:010x}'.format(chan, gen, flag, flagstr, tempf, hum, v))
 
 if len(sys.argv) == 1:
     for s in sys.stdin:
