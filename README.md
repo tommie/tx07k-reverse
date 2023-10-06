@@ -34,3 +34,7 @@ The checksum uses a modified (or wrongly implemented) CRC-4, see `tempdec.py`.
 
 The flag nibble is mostly unknown.
 Bits 0 and 1 are being set, but their meaning are unknown.
+
+### The Process
+
+I wrote a blog post about this: [Reverse Engineering an RF Sensor Protocol Checksum](https://tommie.github.io/a/2023/10/reverse-engineering-checksum)
