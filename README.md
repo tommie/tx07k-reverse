@@ -4,12 +4,17 @@ This repository contains tools for reverse engineering the protocol of the TX07K
 
 ## Protocol
 
-The signals are sent over 433 MHz using pulse distance modulation, with the nibble as the fundamental data unit.
+* The packets are sent over 433 MHz.
+* It use pulse distance modulation (pulse position modulation) on top of on/off keying (AM).
+* All pulses start with a single "on", and the remaining bits are "off".
+* A zero is four pulses long and a one is eight pulses long.
+* The pulse duration is 600 µs.
+* The device sends bursts of six packets, with 8 ms in-between.
+* Periodic updates are sent every 35 s.
+* The "TX" button can be pushed to manually trigger a send.
 
-All pulses start with a single "on", and the remaining bits are "off".
-A zero is four pulses long and a one is eight pulses long.
-
-The packet is ten nibbles long:
+The nibble is the fundamental data unit.
+A packet is ten nibbles long:
 
 ```
   GGIFTTTHHCC
@@ -25,8 +30,6 @@ TTT - 12-bit temperature in deci-Fahrenheit, offset 90 *F.
 HH  - 8-bit humidity as %RH, in BCD.
 CC  - 8-bit channel (1-3).
 ```
-
-The device sends bursts of six packets, with 8 ms in-between.
 
 The checksum uses a modified (or wrongly implemented) CRC-4, see `tempdec.py`.
 
