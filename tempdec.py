@@ -76,9 +76,16 @@ def one(s: str):
     tempf = 0.1*temp - 90
     button = flag & 0x08 != 0
     battlow = flag & 0x04 != 0
+    temp_falling = flag & 0x02 != 0
+    temp_rising = flag & 0x01 != 0
 
-    flagstr = ("T" if button else "") + ("b" if battlow else "")
-    print('temp chan={}/{:x} flag={:x}/{} temp={:.1f}*F rh={}%  {:010x}'.format(chan, gen, flag, flagstr, tempf, hum, v))
+    flagstr = (
+        ('T' if button else '-') +
+        ('b' if battlow else '-') +
+        ('f' if temp_falling else '-') +
+        ('r' if temp_rising else '-')
+    )
+    print('temp chan={}/{:x} flag={:x}/{} temp={:.1f}*F rh={}%'.format(chan, gen, flag, flagstr, tempf, hum))
 
 if len(sys.argv) == 1:
     for s in sys.stdin:
